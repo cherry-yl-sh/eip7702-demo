@@ -1,15 +1,15 @@
 import {createWalletClient, http, parseEther} from 'viem'
 import {privateKeyToAccount} from "viem/accounts";
 import {abi} from "./contract"
-import {devnet4} from "./config";
+import {devnet5} from "./config";
 
 
 // 0x90464A8880FC0f91e889043cA1e4535D2Dc78888
-export const account = privateKeyToAccount('0x...')
+export const account = privateKeyToAccount('0x7C0EA167B05a85c6E6ce7E919983AF3f3CEa379E')
 
 export const walletClient = createWalletClient({
     account,
-    chain: devnet4,
+    chain: devnet5,
     transport: http(),
 })
 

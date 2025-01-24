@@ -1,7 +1,7 @@
 import {createPublicClient, http} from "viem";
-import {devnet4} from "./config";
+import {devnet5} from "./config";
 export const pubClient = createPublicClient({
-    chain: devnet4,
+    chain: devnet5,
     transport: http(),
 });
 
@@ -10,7 +10,7 @@ async function getParam() {
     console.log("chainId: " + chainId)
 
     const transactionCount = await pubClient.getTransactionCount({
-        address: '0x3e918Eb72702C3370CcdF6E1d13d68ADB3CC0123',
+        address: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
     })
     console.log("account nonce: " + transactionCount)
 

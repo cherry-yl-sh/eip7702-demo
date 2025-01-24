@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "solc": "^0.8.0",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "solc": "^0.8.28",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
     "viem": "^2.21.37"
