@@ -34,11 +34,12 @@ async function main() {
     // debug 0xc02461c704975a2b76cd887dad138b85c8b8e2ed7457b101ea89a6585374cbfc
 
     // send eth with sponsor
-    const sponsor = privateKeyToAccount(localnode.sponsorPk)
 
-    const sponsorTxHash = await send7702TxWithSponsor(walletClient,toAddress1,toAddress2, batchCallContractAddress,sponsor)
+    const sponsorTxHash = await send7702TxWithSponsor(walletClient,toAddress1,toAddress2, batchCallContractAddress, localnode.sponsorPk )
 
     console.log("sponsorTxHash "+ sponsorTxHash)
+
+    //erc20 token 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
 
 }
 main()

@@ -2,7 +2,7 @@ import {createWalletClient, encodeFunctionData, http, parseEther} from 'viem'
 import {privateKeyToAccount} from "viem/accounts";
 import {eip7702Actions} from "viem/experimental";
 import { batchCallAbi} from "./contract"
-import {devnet5} from "./config";
+import {devnet5, localnode} from "./config";
 import type {PrivateKeyAccount} from "viem/accounts/types";
 
 
@@ -43,7 +43,9 @@ export async function send7702Tx(walletClient :any,toAddress1 :`0x${string}`,toA
     return hash;
 }
 
-export async function send7702TxWithSponsor(walletClient :any,toAddress1 :`0x${string}`,toAddress2 :`0x${string}`,contractAddress :`0x${string}`,sponsor :PrivateKeyAccount) {
+export async function send7702TxWithSponsor(walletClient :any,toAddress1 :`0x${string}`,toAddress2 :`0x${string}`,contractAddress :`0x${string}`,sponsorpk :`0x${string}`) {
+    const sponsor = privateKeyToAccount(sponsorpk)
+
     // 1. Sign Authorization
     const authorization = await walletClient.signAuthorization({
         contractAddress,
