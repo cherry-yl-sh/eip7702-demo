@@ -1,6 +1,6 @@
 import {createWalletClient, http, parseEther} from 'viem'
 import {privateKeyToAccount} from "viem/accounts";
-import {abi} from "./contract"
+import {batchCallAbi} from "./contract"
 import {devnet5} from "./config";
 
 
@@ -15,7 +15,7 @@ export const walletClient = createWalletClient({
 
 async function execute() {
     const hash = await walletClient.writeContract({
-        abi,
+        abi: batchCallAbi,
         address: '0x3e918Eb72702C3370CcdF6E1d13d68ADB3CC0123',
         functionName: 'execute',
         args: [[

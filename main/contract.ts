@@ -1,4 +1,4 @@
-export const abi = [
+export const batchCallAbi = [
     {
         "type": "function",
         "name": "execute",
@@ -27,4 +27,4 @@ export const abi = [
     },
 ] as const
 
-export const contractAddress = '0x9a2e9dDbA6e37be2ad819544caB91DdB86C106aC'
+export const contractAddress = '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0'

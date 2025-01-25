@@ -25,7 +25,7 @@ async function main() {
     console.log(`Deploying contract with wallet address: ${await wallet.getAddress()}`);
 
     // Read the Solidity contract and compile it
-    const contractPath = path.resolve(__dirname, "../main/contracts/BatchCallDelegation.sol");
+    const contractPath = path.resolve(__dirname, "../main/contracts/DemoErc20.sol");
     const sourceCode = fs.readFileSync(contractPath, "utf8");
 
     // Compile the contract using ethers' `Solc`
@@ -33,7 +33,7 @@ async function main() {
     const input = {
         language: "Solidity",
         sources: {
-            "BatchCallDelegation.sol": { content: sourceCode },
+            "DemoErc20.sol": { content: sourceCode },
         },
         settings: {
             outputSelection: {
@@ -44,15 +44,15 @@ async function main() {
         },
     };
     const compiled = JSON.parse(solc.compile(JSON.stringify(input)));
-    const contractName = "BatchCallDelegation";
-    const bytecode = compiled.contracts["BatchCallDelegation.sol"][contractName].evm.bytecode.object;
-    const abi = compiled.contracts["BatchCallDelegation.sol"][contractName].abi;
+    const contractName = "DemoErc20";
+    const bytecode = compiled.contracts["DemoErc20.sol"][contractName].evm.bytecode.object;
+    const abi = compiled.contracts["DemoErc20.sol"][contractName].abi;
 
     // Deploy the contract
     console.log("Deploying contract...");
     console.log("ABI:", abi);
     const factory = new ethers.ContractFactory(abi, bytecode, wallet);
-    const contract = await factory.deploy();
+    const contract = await factory.deploy("DEMO TOKEN","DEMO");
     await  contract.waitForDeployment()
 
     console.log(`Contract deployed at address: ${contract.target}`);
