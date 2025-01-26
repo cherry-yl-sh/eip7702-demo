@@ -17,10 +17,10 @@ if (!PRIVATE_KEY || !RPC_URL) {
     throw new Error("Missing PRIVATE_KEY or RPC_URL in environment variables");
 }
 
-async function main() {
+export  async function deployBatchCallContract(rpcUrl: string, privateKey: string) {
     // Set up a provider and signer
-    const provider = new ethers.JsonRpcProvider(RPC_URL);
-    const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+    const provider = new ethers.JsonRpcProvider(rpcUrl);
+    const wallet = new ethers.Wallet(privateKey, provider);
 
     console.log(`Deploying contract with wallet address: ${await wallet.getAddress()}`);
 
@@ -56,9 +56,9 @@ async function main() {
     await  contract.waitForDeployment()
 
     console.log(`Contract deployed at address: ${contract.target}`);
+    return contract.target;
 }
 
-main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-});
+// deployBatchCallContract(localnode.rpcUrls.default.http[0],localnode.accountPk).then((contractAddress)=>{
+//     console.log("batchCallContractAddress: " + contractAddress)
+// })

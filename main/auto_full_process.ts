@@ -28,8 +28,8 @@ async function main() {
 
     console.log("balance1: " +  balance1Ether)
 
-    const txHash = await send7702Tx(walletClient,toAddress1)
-    console.log("tx Hash "+ txHash)
+    // const txHash = await send7702Tx(walletClient,toAddress1)
+    // console.log("tx Hash "+ txHash)
     // const balance1After = await getBalance(pubClient, {   address: toAddress1, })
     // const balance1AfterEther = formatEther(balance1After)
     // const balance2After = await getBalance(pubClient, {   address: toAddress2,   })
