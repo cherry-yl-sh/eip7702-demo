@@ -26,227 +26,207 @@ export const batchCallAbi = [
         "stateMutability": "payable"
     },
 ] as const
+export const erc20Abi = [
+    {
+        type: 'event',
+        name: 'Approval',
+        inputs: [
+            {
+                indexed: true,
+                name: 'owner',
+                type: 'address',
+            },
+            {
+                indexed: true,
+                name: 'spender',
+                type: 'address',
+            },
+            {
+                indexed: false,
+                name: 'value',
+                type: 'uint256',
+            },
+        ],
+    },
 
-export const erc20abi = [
+
     {
-        "constant": true,
-        "inputs": [],
-        "name": "name",
-        "outputs": [
+        type: 'event',
+        name: 'Transfer',
+        inputs: [
             {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_spender",
-                "type": "address"
+                indexed: true,
+                name: 'from',
+                type: 'address',
             },
             {
-                "name": "_value",
-                "type": "uint256"
-            }
-        ],
-        "name": "approve",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_from",
-                "type": "address"
+                indexed: true,
+                name: 'to',
+                type: 'address',
             },
             {
-                "name": "_to",
-                "type": "address"
+                indexed: false,
+                name: 'value',
+                type: 'uint256',
+            },
+        ],
+    },
+    {
+        type: 'function',
+        name: 'allowance',
+        stateMutability: 'view',
+        inputs: [
+            {
+                name: 'owner',
+                type: 'address',
             },
             {
-                "name": "_value",
-                "type": "uint256"
-            }
+                name: 'spender',
+                type: 'address',
+            },
         ],
-        "name": "transferFrom",
-        "outputs": [
+        outputs: [
             {
-                "name": "",
-                "type": "bool"
-            }
+                type: 'uint256',
+            },
         ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
     },
     {
-        "constant": true,
-        "inputs": [],
-        "name": "decimals",
-        "outputs": [
+        inputs: [
             {
-                "name": "",
-                "type": "uint8"
+                name: "amount",
+                type: "uint256"
             }
         ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
+        name: "mint",
+        outputs: [],
+        type: "function"
     },
     {
-        "constant": true,
-        "inputs": [
+        type: 'function',
+        name: 'approve',
+        stateMutability: 'nonpayable',
+        inputs: [
             {
-                "name": "_owner",
-                "type": "address"
-            }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-            {
-                "name": "balance",
-                "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-            {
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "name": "_to",
-                "type": "address"
+                name: 'spender',
+                type: 'address',
             },
             {
-                "name": "_value",
-                "type": "uint256"
-            }
+                name: 'amount',
+                type: 'uint256',
+            },
         ],
-        "name": "transfer",
-        "outputs": [
+        outputs: [
             {
-                "name": "",
-                "type": "bool"
-            }
+                type: 'bool',
+            },
         ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
     },
     {
-        "constant": true,
-        "inputs": [
+        type: 'function',
+        name: 'balanceOf',
+        stateMutability: 'view',
+        inputs: [
             {
-                "name": "_owner",
-                "type": "address"
+                name: 'account',
+                type: 'address',
             },
-            {
-                "name": "_spender",
-                "type": "address"
-            }
         ],
-        "name": "allowance",
-        "outputs": [
+        outputs: [
             {
-                "name": "",
-                "type": "uint256"
-            }
+                type: 'uint256',
+            },
         ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
     },
     {
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "fallback"
+        type: 'function',
+        name: 'decimals',
+        stateMutability: 'view',
+        inputs: [],
+        outputs: [
+            {
+                type: 'uint8',
+            },
+        ],
     },
     {
-        "anonymous": false,
-        "inputs": [
+        type: 'function',
+        name: 'name',
+        stateMutability: 'view',
+        inputs: [],
+        outputs: [
             {
-                "indexed": true,
-                "name": "owner",
-                "type": "address"
+                type: 'string',
             },
-            {
-                "indexed": true,
-                "name": "spender",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "value",
-                "type": "uint256"
-            }
         ],
-        "name": "Approval",
-        "type": "event"
     },
     {
-        "anonymous": false,
-        "inputs": [
+        type: 'function',
+        name: 'symbol',
+        stateMutability: 'view',
+        inputs: [],
+        outputs: [
             {
-                "indexed": true,
-                "name": "from",
-                "type": "address"
+                type: 'string',
             },
-            {
-                "indexed": true,
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "name": "value",
-                "type": "uint256"
-            }
         ],
-        "name": "Transfer",
-        "type": "event"
-    }
-]
+    },
+    {
+        type: 'function',
+        name: 'totalSupply',
+        stateMutability: 'view',
+        inputs: [],
+        outputs: [
+            {
+                type: 'uint256',
+            },
+        ],
+    },
+    {
+        type: 'function',
+        name: 'transfer',
+        stateMutability: 'nonpayable',
+        inputs: [
+            {
+                name: 'recipient',
+                type: 'address',
+            },
+            {
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        outputs: [
+            {
+                type: 'bool',
+            },
+        ],
+    },
+    {
+        type: 'function',
+        name: 'transferFrom',
+        stateMutability: 'nonpayable',
+        inputs: [
+            {
+                name: 'sender',
+                type: 'address',
+            },
+            {
+                name: 'recipient',
+                type: 'address',
+            },
+            {
+                name: 'amount',
+                type: 'uint256',
+            },
+        ],
+        outputs: [
+            {
+                type: 'bool',
+            },
+        ],
+    },
+] as const
+
+
 export const contractAddress = '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0'
