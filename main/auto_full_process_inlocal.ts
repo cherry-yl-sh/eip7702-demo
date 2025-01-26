@@ -53,13 +53,19 @@ async function main() {
     const balance1Ether = formatEther(balance1)
     console.log("balance1: " + balance1Ether)
 
+    console.log("============= send ETH by SetCode=============")
+    /**
+     * --------------------  send ETH by SetCode   --------------------
+     */
     const txHash = await send7702Tx(walletClient, toAddress1, toAddress2, batchCallContractAddress.toString() as `0x${string}`)
     console.log("send7702Tx tx Hash " + txHash)
     printAllTxInf(txHash)
+    console.log("============= send ETH by SetCode WithSponsor =============")
     // send eth with sponsor
-
+    /**
+     * --------------------  send ETH by SetCode WithSponsor   --------------------
+     */
     const sponsorTxHash = await send7702TxWithSponsor(walletClient, toAddress1, toAddress2, batchCallContractAddress.toString() as `0x${string}`, localnode.sponsorPk)
-
     console.log("sponsorTxHash " + sponsorTxHash)
 
     //erc20 token 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
@@ -79,6 +85,10 @@ async function main() {
     //
     // const sendErc20Txhash = await sendErc20(walletClient, toAddress1, tokenAddress, 5, batchCallContractAddress)
     // console.log("sendErc20Txhash " + sendErc20Txhash)
+    /**
+     * --------------------  send ERC20 Token by SetCode WithSponsor   --------------------
+     */
+    console.log("============= send ERC20 Token by SetCode WithSponsor  =============")
 
     const address1tokenBalance = await tokenContract.read.balanceOf([
         toAddress1
