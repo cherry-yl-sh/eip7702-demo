@@ -1,20 +1,15 @@
 import {privateKeyToAccount} from "viem/accounts";
 import {localnode} from "./config";
 import {
-    CallParameters,
-    createClient,
     createPublicClient,
     createWalletClient,
-    encodeFunctionData,
-    formatEther, formatTransactionRequest,
-    http,
-    parseEther
+    formatEther, http
 } from "viem";
 import {eip7702Actions} from "viem/experimental";
 import {getBalance} from "viem/actions";
 import {send7702Tx, send7702TxWithSponsor, sendErc20, sendErc20WithSponsor} from "./7702_basic_tool";
 import {getContract} from 'viem'
-import {batchCallAbi, erc20Abi} from "./contract";
+import {erc20Abi} from "./contract";
 import {deployBatchCallContract} from "./deployBatchCall";
 import {deployDemoErc20Token} from "./deployDemoErc20";
 

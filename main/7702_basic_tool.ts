@@ -83,7 +83,7 @@ export async function send7702TxWithSponsor(walletClient :any,toAddress1 :`0x${s
     return hash;
 }
 
-export async  function sendErc20(walletClient :any,toAddress1: `0x${string}`,tokenAddress: `0x${string}`,tokenAmount :number,contractAddress :`0x${string}`){
+export async function sendErc20(walletClient :any,toAddress1: `0x${string}`,tokenAddress: `0x${string}`,tokenAmount :number,contractAddress :`0x${string}`){
 
 
     const authorization = await walletClient.signAuthorization({
