@@ -27,8 +27,8 @@ const pubClient = createPublicClient({
 
 async function initContract() {
     const batchCallContractAddress = await deployBatchCallContract(localnode.rpcUrls.default.http[0], localnode.accountPk);
-    console.log("batchCallContractAddress: " + batchCallContractAddress)
     const tokenAddress = await deployDemoErc20Token(localnode.rpcUrls.default.http[0], localnode.accountPk);
+    console.log("batchCallContractAddress: " + batchCallContractAddress)
     console.log("tokenContract: " + tokenAddress)
 
 }
@@ -38,8 +38,8 @@ async function main() {
     // initContract first!!!
     // send eth
     // const batchCallContractAddress = await deployBatchCallContract(localnode.rpcUrls.default.http[0], localnode.accountPk);
-    const batchCallContractAddress = '0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1'
-    const tokenAddress = '0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44'
+    const batchCallContractAddress = '0xc5a5C42992dECbae36851359345FE25997F5C42d'
+    const tokenAddress = '0x67d269191c92Caf3cD7723F116c85e6E9bf55933'
     console.log("batchCallContractAddress: " + batchCallContractAddress)
     console.log("tokenContract: " + tokenAddress)
     const toAddress1 = '0xcb98643b8786950F0461f3B0edf99D88F274574D'
@@ -62,7 +62,7 @@ async function main() {
      */
     const sponsorTxHash = await send7702TxWithSponsor(walletClient, toAddress1, toAddress2, batchCallContractAddress.toString() as `0x${string}`, localnode.sponsorPk)
     console.log("sponsorTxHash " + sponsorTxHash)
-
+    printAllTxInf(sponsorTxHash)
     //erc20 token 0x8A791620dd6260079BF849Dc5567aDC3F2FdC318
     // mint token
     // transfertoken
@@ -91,6 +91,7 @@ async function main() {
     console.log("address1tokenBalance: " + address1tokenBalance + " account " + toAddress1)
     const sendErc20TxhashWithSponsor = await sendErc20WithSponsor(walletClient, toAddress1, tokenAddress as `0x${string}`, 5, batchCallContractAddress.toString() as `0x${string}`, localnode.sponsorPk)
     console.log("sendErc20TxhashWithSponsor " + sendErc20TxhashWithSponsor)
+    printAllTxInf(sendErc20TxhashWithSponsor)
 }
 
  async function printAllTxInf(txHash: `0x${string}`) {
