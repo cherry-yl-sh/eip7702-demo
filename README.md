@@ -15,9 +15,18 @@ you will see
 git clone https://github.com/pimlicolabs/alto
 cd alto
 pnpm install
-ts-node script/localDeveloper/index.ts
-./alto --config scripts/config.local.json
 ```
+
+init contract (entrypoint ,safe wallet contract)
+```shell
+ts-node scripts/localDeployer/index.ts
+```
+start bundler
+```shell
+./alto --config scripts/config.local.json
+```shell
+
+
 you will see
 ![img.png](img.png)
 
